@@ -6,12 +6,13 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import ru.perelyginva.test.databinding.TvShowLayoutAdapterBinding
+import ru.perelyginva.test.databinding.TvShowItemLayoutBinding
+
 import ru.perelyginva.test.models.TvShowItem
 
 class TvShowAdapter : RecyclerView.Adapter<TvShowAdapter.MyViewHolder>() {
 
-    inner class MyViewHolder(val binding: TvShowLayoutAdapterBinding) :
+    inner class MyViewHolder(val binding: TvShowItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root)
 
 
@@ -34,7 +35,7 @@ class TvShowAdapter : RecyclerView.Adapter<TvShowAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(
-            TvShowLayoutAdapterBinding.inflate(
+            TvShowItemLayoutBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
             )
         )

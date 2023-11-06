@@ -2,12 +2,13 @@ package ru.perelyginva.test.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import ru.perelyginva.test.R
 import ru.perelyginva.test.databinding.TvShowItemLayoutBinding
-
 import ru.perelyginva.test.models.TvShowItem
 
 class TvShowAdapter : RecyclerView.Adapter<TvShowAdapter.MyViewHolder>() {
@@ -46,11 +47,14 @@ class TvShowAdapter : RecyclerView.Adapter<TvShowAdapter.MyViewHolder>() {
 
         holder.binding.apply {
             tvTitle.text = currentTvShow.name
-
             imTV.load(currentTvShow.image.original) {
                 crossfade(true)
                 crossfade(1000)
             }
+        }
+        holder.itemView.setOnClickListener { view ->
+            view.findNavController().navigate(R.id.action_startFragment_to_tvAboutFragment)
+
         }
     }
 

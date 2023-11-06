@@ -7,6 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import ru.perelyginva.test.adapter.TvShowAdapter
@@ -16,7 +20,7 @@ import ru.perelyginva.test.viewmodel.TvShowViewModel
 @AndroidEntryPoint
 class StartFragment : Fragment() {
 
-    private var _binding: FragmentStartBinding ? = null
+    private var _binding: FragmentStartBinding? = null
     private val binding: FragmentStartBinding
         get() = _binding ?: throw RuntimeException("FragmentStartBinding == null")
     private val viewModel: TvShowViewModel by viewModels()
@@ -35,8 +39,8 @@ class StartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpRv()
-    }
 
+    }
 
     private fun setUpRv() {
         tvShowAdapter = TvShowAdapter()
@@ -47,8 +51,8 @@ class StartFragment : Fragment() {
                 context, LinearLayoutManager.HORIZONTAL,
                 false
             )
-
             setHasFixedSize(true)
+
         }
 
         binding.rvEpisodes.apply {
@@ -57,7 +61,6 @@ class StartFragment : Fragment() {
                 context, LinearLayoutManager.HORIZONTAL,
                 false
             )
-
             setHasFixedSize(true)
         }
 
@@ -68,15 +71,11 @@ class StartFragment : Fragment() {
                 context, LinearLayoutManager.HORIZONTAL,
                 false
             )
-
             setHasFixedSize(true)
         }
 
-
         viewModel.repositoryTvShow.observe(viewLifecycleOwner) { listTvShows ->
-
             tvShowAdapter.tvShows = listTvShows
-
         }
 
     }
